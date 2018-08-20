@@ -13,7 +13,7 @@ function getFriendlyNumbers(start, end) {
 		    	}
 		    };
 		    
-		    if(numbersSum < 10 || numbersSum < number) continue;
+		    if(numbersSum < 10 || numbersSum < start) continue;
 	
 		    function Number(value, sum) {
 				this.value = value;
