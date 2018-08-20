@@ -12,6 +12,8 @@ function getFriendlyNumbers(start, end) {
 		    		numbersSum += i;
 		    	}
 		    };
+		    
+		    if(numbersSum < 10 || numbersSum < number) continue;
 	
 		    function Number(value, sum) {
 				this.value = value;
