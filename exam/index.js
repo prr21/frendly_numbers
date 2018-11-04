@@ -1,13 +1,15 @@
+<script>
 function getFriendlyNumbers(start, end) {
 	if (start <= end && typeof(start || end) === 'number' && (start || end) > 0) {
 		let result = [],
-		numbersArr = [];
+			numbersArr = {};
 	
 	    for (let number = start; number <= end; number++) {
 			let numbersSum = 0;
 	
 		    for (let i = 1; i < number; i++) {
 				let divider = number / i;
+
 		    	if ((divider ^ 0) === divider) {	    	
 		    		numbersSum += i;
 		    	}
@@ -22,6 +24,8 @@ function getFriendlyNumbers(start, end) {
 	
 	    	let numObj = new Number(number, numbersSum);
 	    	numbersArr.push(numObj)
+	  		// numbersArr[number]
+
 		};
 	
 		for (let i = 0; i < numbersArr.length; i++) {
@@ -39,6 +43,22 @@ function getFriendlyNumbers(start, end) {
 	} else return false;
 }
 
+const memoize = (fn) => {
+	let cache = {};
+
+	return (...args) => {
+		let num = args[0];
+
+		if (num in cache) {
+  			return cache[num];
+  		} else {
+  			let result = fn(num);
+  			cache[num] = result;
+  			return result;
+  		}
+  	}
+}
+
 console.log(getFriendlyNumbers(200, 1220));
 
 module.exports = {
@@ -46,3 +66,4 @@ module.exports = {
     secondName: 'Prr21',
     task: getFriendlyNumbers
 }
+</script>
